@@ -8,14 +8,14 @@ The following functions are exposed.
 * VelocityMeteorInternals.files.findPackageDir
 * VelocityMeteorInternals.files.runJavaScript
 
-# For contributors
+## For contributors
 
-## General guidelines
+### General guidelines
 
 * The version of this package reflects the Meteor version that has been
   used as source.
 
-## Guidelines for adding new functions of Meteor to this package
+### Guidelines for adding new functions of Meteor to this package
 
 * Use the same file structure that Meteor use
 * Include as few parts of Meteor as possible

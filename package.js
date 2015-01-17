@@ -1,12 +1,12 @@
 Package.describe({
   name: 'velocity:meteor-internals',
   summary: 'Exposes internals of Meteor that are useful for Velocity',
-  version: '1.0.2_1',
+  version: '1.0.2_2',
   git: 'https://github.com/meteor-velocity/meteor-internals.git'
 });
 
 Package.onUse(function(api) {
-  api.export('VelocityMeteorInternals');
+  api.export('VelocityMeteorInternals', 'server');
   api.versionsFrom('1.0.2.1');
   api.use('underscore');
   api.addFiles([
@@ -14,7 +14,7 @@ Package.onUse(function(api) {
     'tools/parse-stack.js',
     'tools/buildmessage.js',
     'tools/files.js'
-  ]);
+  ], 'server');
 });
 
 Npm.depends({

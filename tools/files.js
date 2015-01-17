@@ -17,8 +17,6 @@ var path = Npm.require('path');
 var sourcemap = Npm.require('source-map');
 var sourcemap_support = Npm.require('source-map-support');
 
-var buildmessage = Npm.require('./buildmessage.js');
-
 var files = {};
 VelocityMeteorInternals.files = files;
 

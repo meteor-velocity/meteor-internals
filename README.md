@@ -23,3 +23,8 @@ The following functions are exposed.
   * Don't fix code style issues that exist in the original Meteor code
   * Replace `require` with `Npm.require`
   * Catch exports and expose them under VelocityMeteorInternals
+
+## License
+
+The code is licensed under the MIT license.
+Most of the code comes from Meteor (see [Meteor license](https://github.com/meteor/meteor/blob/devel/LICENSE.txt)).

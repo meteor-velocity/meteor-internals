@@ -8,7 +8,7 @@ Package.describe({
 Package.onUse(function(api) {
   api.export('VelocityMeteorInternals', 'server');
   api.versionsFrom('1.0.2.1');
-  api.use('underscore');
+  api.use('underscore', 'server');
   api.addFiles([
     'main.js',
     'tools/parse-stack.js',

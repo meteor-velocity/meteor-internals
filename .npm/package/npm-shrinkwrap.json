@@ -1,0 +1,28 @@
+{
+  "dependencies": {
+    "esprima": {
+      "version": "1.2.2"
+    },
+    "source-map": {
+      "version": "0.1.40",
+      "dependencies": {
+        "amdefine": {
+          "version": "0.1.0"
+        }
+      }
+    },
+    "source-map-support": {
+      "version": "0.2.8",
+      "dependencies": {
+        "source-map": {
+          "version": "0.1.32",
+          "dependencies": {
+            "amdefine": {
+              "version": "0.1.0"
+            }
+          }
+        }
+      }
+    }
+  }
+}

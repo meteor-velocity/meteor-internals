@@ -336,7 +336,7 @@ function wrapFsFunc(fsFuncName, pathArgIndices, options) {
   }
 
   wrapper.displayName = fsFuncName;
-  return files[fsFuncName] = Profile("files." + fsFuncName, wrapper);
+  return files[fsFuncName] = wrapper;
 }
 
 wrapFsFunc("writeFile", [0]);

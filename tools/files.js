@@ -15,6 +15,7 @@
 var fs = Npm.require("fs");
 var path = Npm.require('path');
 var Fiber = Npm.require('fibers');
+var Future = Npm.require('fibers/future');
 var sourcemap = Npm.require('source-map');
 var sourcemap_support = Npm.require('source-map-support');
 

@@ -14,6 +14,7 @@
 
 var fs = Npm.require("fs");
 var path = Npm.require('path');
+var Fiber = Npm.require('fibers');
 var sourcemap = Npm.require('source-map');
 var sourcemap_support = Npm.require('source-map-support');
 
@@ -315,7 +316,8 @@ files.FancySyntaxError = function () {};
 function wrapFsFunc(fsFuncName, pathArgIndices, options) {
   options = options || {};
 
-  var fsFunc = Meteor.wrapAsync(fs[fsFuncName], fs);
+  var fsFunc = fs[fsFuncName];
+  var fsFuncSync = fs[fsFuncName + "Sync"];
 
   function wrapper() {
     var argc = arguments.length;
@@ -329,7 +331,30 @@ function wrapFsFunc(fsFuncName, pathArgIndices, options) {
       args[i] = files.convertToOSPath(args[i]);
     }
 
-    var result = fsFunc.apply(fs, args);
+    if (Fiber.current &&
+      Fiber.yield && ! Fiber.yield.disallowed) {
+      var fut = new Future;
+
+      args.push(function callback(err, value) {
+        if (options.noErr) {
+          fut.return(err);
+        } else if (err) {
+          fut.throw(err);
+        } else {
+          fut.return(value);
+        }
+      });
+
+      fsFunc.apply(fs, args);
+
+      var result = fut.wait();
+      return options.modifyReturnValue
+        ? options.modifyReturnValue(result)
+        : result;
+    }
+
+    // If we're not in a Fiber, run the sync version of the fs.* method.
+    var result = fsFuncSync.apply(fs, args);
     return options.modifyReturnValue
       ? options.modifyReturnValue(result)
       : result;

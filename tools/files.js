@@ -104,6 +104,17 @@ files.findPackageDir = function (filepath) {
   return findUpwards(isPackageDir, filepath);
 };
 
+// Like statSync, but null if file not found
+files.statOrNull = function (path) {
+  try {
+    return files.stat(path);
+  } catch (e) {
+    if (e.code == "ENOENT")
+      return null;
+    throw e;
+  }
+};
+
 // Return the result of evaluating `code` using
 // `runInThisContext`. `code` will be wrapped in a closure. You can
 // pass additional values to bind in the closure in `options.symbols`,

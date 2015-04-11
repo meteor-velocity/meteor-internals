@@ -109,7 +109,7 @@ files.statOrNull = function (path) {
   try {
     return files.stat(path);
   } catch (e) {
-    if (e.code == "ENOENT")
+    if (e.code == "ENOENT" || e.code == "ENOTDIR")
       return null;
     throw e;
   }

@@ -1,7 +1,7 @@
 Package.describe({
   name: 'velocity:meteor-internals',
   summary: 'Exposes internals of Meteor that are useful for Velocity',
-  version: '1.1.0_6',
+  version: '1.1.0_7',
   git: 'https://github.com/meteor-velocity/meteor-internals.git'
 });
 
